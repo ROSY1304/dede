@@ -1,8 +1,12 @@
 from flask import Flask, jsonify, request, send_from_directory, render_template
 import os
 import nbformat
+from flask_cors import CORS  # Importa la extensión CORS
 
 app = Flask(__name__, static_folder='static')
+
+# Habilitar CORS para la aplicación completa
+CORS(app)  # Esto permitirá que todas las rutas acepten solicitudes de otros dominios
 
 # Directorio donde están los documentos .ipynb
 DOCUMENTS_FOLDER = 'documentos'
@@ -84,4 +88,3 @@ def ver_contenido_documento(nombre):
 # Iniciar la aplicación
 if __name__ == '__main__':
     app.run(debug=True)
-
